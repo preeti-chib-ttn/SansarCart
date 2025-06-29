@@ -23,7 +23,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @SQLDelete(sql = "UPDATE product_variations SET is_deleted = true WHERE id = ?")
-@SQLRestriction(value = "is_deleted = false")
+@SQLRestriction(value = "is_deleted IS NOT TRUE")
 public class ProductVariation extends AuditInfo{
 
     @Id

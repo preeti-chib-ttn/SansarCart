@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -29,7 +30,7 @@ public class OrderProduct {
 
     private Long quantity;
 
-    private Double price;
+    private BigDecimal price;
 
     @ManyToOne
     @JoinColumn(name = "product_variation_id")

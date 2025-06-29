@@ -2,6 +2,7 @@ package com.preeti.sansarcart.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.preeti.sansarcart.entity.Customer;
 import com.preeti.sansarcart.entity.Seller;
 import com.preeti.sansarcart.entity.User;
 import com.preeti.sansarcart.enums.EntityType;
@@ -11,11 +12,13 @@ import com.preeti.sansarcart.payload.product.ProductDTO;
 import com.preeti.sansarcart.payload.product.ProductUpdateDTO;
 import com.preeti.sansarcart.payload.product.ProductVariationDTO;
 import com.preeti.sansarcart.payload.product.ProductVariationUpdateDTO;
+import com.preeti.sansarcart.payload.product.cart.CartDTO;
 import com.preeti.sansarcart.response.ApiResponse;
 import com.preeti.sansarcart.response.MetaData;
 import com.preeti.sansarcart.response.ProductViewResponse;
 import com.preeti.sansarcart.response.ProductVariationResponse;
 import com.preeti.sansarcart.service.AuthenticationService;
+import com.preeti.sansarcart.service.CartService;
 import com.preeti.sansarcart.service.ProductService;
 import com.preeti.sansarcart.service.ProductVariationService;
 import com.preeti.sansarcart.service.image.ImageService;
@@ -50,6 +53,7 @@ public class ProductController {
     private final ImageService imageService;
     private final ObjectMapper objectMapper;
     private final Validator validator;
+    private final CartService cartService;
 
 // ================================= SELLER API ====================================
 
@@ -370,6 +374,15 @@ public class ProductController {
         log.info("Successfully fetched {} similar products for product ID: {}", pagedSimilarProducts.size(), productId);
         MetaData metaData = MetaData.ofPagination(size, page, sortBy, sortDir, filters);
         return ResponseEntity.ok(ApiResponse.success(i18n("product.similar.fetched"), pagedSimilarProducts, metaData));
+    }
+
+    //================================= Cart ====================================
+    @PostMapping("customer/cart")
+    public ResponseEntity<ApiResponse<CartDTO>> addToCart(@Valid @RequestBody CartDTO cartDTO) {
+        Customer currentUser =(Customer) authenticationService.getCurrentUser();
+        CartDTO added = cartService.addToCart(cartDTO, currentUser);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(ApiResponse.success(i18n("cart.add.success"), added));
     }
 
 
