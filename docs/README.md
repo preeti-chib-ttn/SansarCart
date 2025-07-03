@@ -1,5 +1,7 @@
 # Sansar Cart: JVM Bootcamp project
-### `Preeti Chib 8228`
+### `Preeti Chib`
+
+[Database Diagram and flows](https://excalidraw.com/#json=Xz_FbnsrdcXIQZnC_aU_h,fLSlNcEm0yRTEpg57bvu6A)
 
 
 
