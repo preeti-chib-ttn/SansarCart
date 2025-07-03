@@ -2,8 +2,8 @@
 ### `Preeti Chib`
 
 [Database Diagram and flows](https://excalidraw.com/#json=Xz_FbnsrdcXIQZnC_aU_h,fLSlNcEm0yRTEpg57bvu6A)
-
-
+[Documentation](https://docs.google.com/document/d/1kALUvPOaH8J_vTFYPddSfKzSqfNeBFLzWDcQ5a3ftXE/edit?usp=sharing)
+[Pitch and Idea](https://docs.google.com/presentation/d/1yuafQ5v3wZSpDOkZoSj0vp_ZkiazzVbH/edit?usp=sharing&ouid=117660264163683601698&rtpof=true&sd=true)
 
 ## Database Relations:
 #### User Role:
